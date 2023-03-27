@@ -12,6 +12,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { BackgroundComponent } from './background/background.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MenuComponent } from './menu/menu.component';
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    FontAwesomeModule
   ],
   providers: [
     ScreenTrackingService,

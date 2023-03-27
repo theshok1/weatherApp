@@ -1,1 +1,15 @@
-<p>menu works!</p>
+<menu *ngIf="visible">
+    <section title="user">
+        <img src="../../assets/images/user.png">
+        <p>User Name</p>
+    </section>
+    <ul>
+        <li>Weather
+            <fa-icon [icon]="arrowIcon"></fa-icon>
+        </li>
+        <li>Time
+            <fa-icon [icon]="arrowIcon"></fa-icon>
+        </li>
+    </ul>
+    <button (click)="signOut()">Sing out</button>
+</menu>

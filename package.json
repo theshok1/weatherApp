@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@ngneat/input-mask": "^6.1.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -32,6 +33,7 @@
     "@angular-devkit/build-angular": "^15.2.4",
     "@angular/cli": "^15.2.4",
     "@angular/compiler-cli": "^15.2.4",
+    "@types/inputmask": "^5.0.3",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",

@@ -15,7 +15,7 @@ export class BackgroundComponent implements OnInit {
     wind: '../../assets/videos/wind.mp4'
   }
 
-  nowLink$: Observable<string> = of(this.bgs['snow'])
+  nowLink$: Observable<string> = of(this.bgs['sunny'])
 
   constructor() { }
 

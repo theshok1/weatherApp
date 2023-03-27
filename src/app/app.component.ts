@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'weatherApp';
+
+  menuState: boolean = false
+
+  openMenu(): void {
+    this.menuState = !this.menuState
+  }
 }

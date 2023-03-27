@@ -1,5 +1,24 @@
 <section>
     <div>
-        <fa-icon [icon]="closeIcon"></fa-icon>
+        <fa-icon [icon]="closeIcon" (click)="close()"></fa-icon>
+        <h1>Weather {{loginEvent ? 'Login' : 'Registration'}}</h1>
+        <form [formGroup]="form">
+            <div class="item">
+                <input type="email" placeholder="___@___.___" [inputMask]="inputMask" formControlName="email">
+            </div>
+            <div class="item">
+                <input [type]="viewPass ? 'text' : 'password'" placeholder="Password" formControlName="password">
+            </div>
+        </form>
+        <div class="buttons">
+            <button (click)="loginEvent ? confirmAuth() : loginEvent = !loginEvent">{{loginEvent ? 'Confirm' : 'Sign in'}}</button>
+            <button (click)="loginEvent ? loginEvent = !loginEvent : confirmReg()">{{loginEvent ? 'Sign up' : 'Confirm'}}</button>
+        </div>
+        <div class="delimeter">
+            <div></div>
+            <p>OR</p>
+            <div></div>
+        </div>
+        <button (click)="googleAuth()">Google Auth</button>
     </div>
 </section>

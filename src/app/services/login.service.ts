@@ -1,7 +1,8 @@
 import { inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, user, User, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signOut } from "@angular/fire/auth";
-import { of } from 'rxjs';
+import { UrlTree, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 interface authForm {
   email: string,
@@ -13,14 +14,20 @@ interface authForm {
 })
 export class LoginService {
 
+  isLoggedIn: boolean = false
   private auth: Auth = inject(Auth)
   user$ = user(this.auth)
 
   private googleProvider = new GoogleAuthProvider()
 
-  constructor() {
+  constructor(private router: Router) {
     this.user$.subscribe((aUser: User | null) => {
       console.log(aUser)
+      if (aUser) {
+        this.isLoggedIn = true
+      } else {
+        this.isLoggedIn = false
+      }
     })
   }
 

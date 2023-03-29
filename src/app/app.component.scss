@@ -7,3 +7,8 @@ app-background {
     height: 100vh;
     z-index: 1;
 }
+
+section {
+    display: flex;
+    height: calc(100% - 80px);
+}

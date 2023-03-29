@@ -1,4 +1,6 @@
 <app-background></app-background>
 <app-header (menu)="openMenu()"></app-header>
-<app-menu [visible]="menuState"></app-menu>
-<router-outlet></router-outlet>
+<section>
+    <router-outlet></router-outlet>
+    <app-menu [visible]="menuState" [style.flex]="menuState ? '0 1 20vw' : '0 0 auto'"></app-menu>
+</section>

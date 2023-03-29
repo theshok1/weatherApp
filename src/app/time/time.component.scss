@@ -1,0 +1,34 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 450px;
+    >div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 20px;
+        position: relative;
+        gap: 20px;
+        width: 100%;
+        h1 {
+            font-family: "Montserrat Alternates";
+            font-size: 28px;
+            background: linear-gradient(90deg, blue 13%, pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            user-select: none;
+        }
+        p {
+            font-family: "Montserrat Alternates";
+            font-size: 79px;
+            background: linear-gradient(90deg, blue -55%, #00ff4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            user-select: none;
+            font-weight: 900;
+        }
+    }
+}

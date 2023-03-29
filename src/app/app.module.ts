@@ -13,6 +13,8 @@ import { BackgroundComponent } from './background/background.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WeatherProviderService } from './services/weather-provider.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [
     ScreenTrackingService,
-    UserTrackingService
+    UserTrackingService,
+    WeatherProviderService
   ],
   bootstrap: [AppComponent]
 })

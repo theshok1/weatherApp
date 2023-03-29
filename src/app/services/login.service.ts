@@ -1,8 +1,7 @@
-import { inject } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, user, User, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signOut } from "@angular/fire/auth";
-import { UrlTree, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Auth, createUserWithEmailAndPassword, user, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, signOut } from "@angular/fire/auth";
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 interface authForm {
   email: string,
@@ -14,21 +13,12 @@ interface authForm {
 })
 export class LoginService {
 
-  isLoggedIn: boolean = false
   private auth: Auth = inject(Auth)
   user$ = user(this.auth)
 
   private googleProvider = new GoogleAuthProvider()
 
   constructor(private router: Router) {
-    this.user$.subscribe((aUser: User | null) => {
-      console.log(aUser)
-      if (aUser) {
-        this.isLoggedIn = true
-      } else {
-        this.isLoggedIn = false
-      }
-    })
   }
 
   createAccount(data: authForm): void {
@@ -61,7 +51,7 @@ export class LoginService {
   signOut(): void {
     signOut(this.auth)
       .then(() => {
-
+        this.router.navigateByUrl('login')
       })
       .catch((error) => {
         console.log('error code: '+error.code+'\nerror message: '+error.message)

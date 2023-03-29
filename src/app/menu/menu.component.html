@@ -1,13 +1,13 @@
 <menu *ngIf="visible">
     <section title="user">
-        <img src="../../assets/images/user.png">
-        <p>User Name</p>
+        <img [src]="user?.photoURL ? user?.photoURL : '../../assets/images/user.png'">
+        <p>{{user?.displayName ? user?.displayName : 'Unautorized'}}</p>
     </section>
     <ul>
-        <li>Weather
+        <li routerLink="weather">Weather
             <fa-icon [icon]="arrowIcon"></fa-icon>
         </li>
-        <li>Time
+        <li routerLink="time">Time
             <fa-icon [icon]="arrowIcon"></fa-icon>
         </li>
     </ul>

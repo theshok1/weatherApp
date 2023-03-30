@@ -1,12 +1,21 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
     background-color: #ffffff96;
     border-radius: 0 0 10px 10px;
     >img {
         width: 60px;
         height: 60px;
+    }
+    p {
+        font-family: "Montserrat Alternates";
+        font-size: 28px;
+        background: linear-gradient(90deg, blue 13%, pink);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        user-select: none;
     }
     button {
         background: none;

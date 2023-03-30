@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +12,12 @@ export class AppComponent {
 
   openMenu(): void {
     this.menuState = !this.menuState
+  }
+
+  @HostListener('window:click', ['$event'])
+  onClick(e: any): void {
+    if (this.menuState && e.target.id != 'menu' && e.target.id != 'menuButton') {
+      this.menuState = false
+    }
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { WeatherProviderService } from './weather-provider.service';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { OpenWeatherMap } from '../interfaces/open-weather-map';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class WeatherService {
 
   private city: string = this._weatherProv.city.value
   private provider: string = this._weatherProv.provider.value
+
+  weather: BehaviorSubject<OpenWeatherMap | any> = new BehaviorSubject('')
 
   constructor(private _weatherProv: WeatherProviderService,
     private http: HttpClient) {
@@ -33,27 +36,31 @@ export class WeatherService {
     })
   }
 
-  getCurentWeather(): Observable<any> {
+  getCurentWeather(): void {
     if (this.provider == 'WeatherAPI') {
-      return this.getWeatherOfWeatherApi()
+      this.getWeatherOfWeatherApi()
     } else {
-      return this.getWeatherOfOpenWeatherMap()
+      this.getWeatherOfOpenWeatherMap()
     }
   }
 
-  private getWeatherOfWeatherApi(): Observable<any> {
-    return this.http.get(this.weatherApiLink, {params: {
+  private getWeatherOfWeatherApi(): void {
+    this.http.get(this.weatherApiLink, {params: {
       key: this.weatherApiKey,
       q: this.city,
       aqi: 'yes'
-    }})
+    }}).subscribe(res => {
+      this.weather.next(res)
+    })
   }
 
-  private getWeatherOfOpenWeatherMap(): Observable<any> {
-    return this.http.get(this.openWeatherApiLink, {params: {
+  private getWeatherOfOpenWeatherMap(): void {
+    this.http.get<OpenWeatherMap>(this.openWeatherApiLink, {params: {
       q: this.city,
       appid: this.openWeatherApiKey,
       units: 'metric'
-    }})
+    }}).subscribe(res => {
+      this.weather.next(res)
+    })
   }
 }

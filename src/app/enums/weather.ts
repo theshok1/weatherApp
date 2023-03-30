@@ -1,0 +1,17 @@
+export enum Weather {
+    Thunderstorm = 'storm',
+    Tornado = 'storm',
+    Drizzle = 'rain',
+    Rain = 'rain',
+    Snow = 'snow',
+    Mist = 'wind',
+    Smoke = 'wind',
+    Haze = 'wind',
+    Dust = 'wind',
+    Fog = 'wind',
+    Sand = 'wind',
+    Ash = 'wind',
+    Squall = 'wind',
+    Clouds = 'wind',
+    Clear = 'sunny',
+}

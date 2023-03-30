@@ -1,5 +1,28 @@
 <section>
     <div>
         <h1>{{title}}</h1>
+        <input #cityInput type="text" placeholder="city" (keyup)="selectCity()">
+        <div class="weatherWidget">
+            <div class="title">
+                <img [src]="'https://openweathermap.org/img/wn/' + icon + '@2x.png'">
+                <div class="weather">
+                    <div class="temp">
+                        <p>{{temp}}</p>
+                    </div>
+                    <div class="sys">
+                        <div class="city">
+                            <p>{{city}}</p>
+                            <p>{{country}}</p>
+                        </div>
+                        <p>{{date | date:'MMM d, EEEE'}}</p>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li>{{weather}}</li>
+                <li>Видимость: <span>{{pressure}}</span></li>
+                <li>Ветер: <span>{{windSpeed}}</span></li>
+            </ul>
+        </div>
     </div>
 </section>

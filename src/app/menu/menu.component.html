@@ -1,4 +1,4 @@
-<menu *ngIf="visible">
+<menu id='menu' *ngIf="visible">
     <section title="user">
         <img [src]="user?.photoURL ? user?.photoURL : '../../assets/images/user.png'">
         <p>{{user?.displayName ? user?.displayName : 'Unautorized'}}</p>

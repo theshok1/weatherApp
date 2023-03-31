@@ -1,3 +1,1 @@
-<video [src]="nowLink$ | async" autoplay loop muted [style.width.%]="100" [style.height.%]="100" [style.objectFit]="'cover'" [style.filter]="'brightness(0.7)'">
-    <source [src]="nowLink$ | async" type="video/mp4">
-</video>
+<video [src]="'../../assets/videos/' + (nowLink$ | async) + '.webm'" autoplay loop muted [style.width.%]="100" [style.height.%]="100" [style.objectFit]="'cover'" [style.filter]="'brightness(0.7)'"></video>

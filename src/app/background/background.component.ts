@@ -14,11 +14,11 @@ import { ObjectIsInterfaceService } from '../services/object-is-interface.servic
 })
 export class BackgroundComponent implements OnInit {
   bgs: {[key: string]: string} = {
-    sunny: '../../assets/videos/sunny.mp4',
-    rain: '../../assets/videos/rain.mp4',
-    snow: '../../assets/videos/snow.mp4',
-    storm: '../../assets/videos/storm.mp4',
-    wind: '../../assets/videos/wind.mp4'
+    sunny: 'sunny',
+    rain: 'rain',
+    snow: 'snow',
+    storm: 'storm',
+    wind: 'wind'
   }
 
   weathers: {[key: string]: string} = Object.assign(Weather)

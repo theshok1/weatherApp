@@ -2,9 +2,13 @@
     <div>
         <h1>{{title}}</h1>
         <input #cityInput type="text" placeholder="city" (keyup)="selectCity()">
+        <select (change)="onSelectProvider($event)">
+            <option value="openWeatherMap">openWeatherMap</option>
+            <option value="WeatherAPI">WeatherAPI</option>
+        </select>
         <div class="weatherWidget">
             <div class="title">
-                <img [src]="'https://openweathermap.org/img/wn/' + icon + '@2x.png'">
+                <img [src]="icon">
                 <div class="weather">
                     <div class="temp">
                         <p>{{temp}}</p>
@@ -12,7 +16,6 @@
                     <div class="sys">
                         <div class="city">
                             <p>{{city}}</p>
-                            <p>{{country}}</p>
                         </div>
                         <p>{{date | date:'MMM d, EEEE'}}</p>
                     </div>

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { WeatherProviderService } from './weather-provider.service';
 import { HttpClient } from "@angular/common/http";
-import { Observable, BehaviorSubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { OpenWeatherMap } from '../interfaces/open-weather-map';
+import { WeatherApi } from '../interfaces/weather-api';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class WeatherService {
   private city: string = this._weatherProv.city.value
   private provider: string = this._weatherProv.provider.value
 
-  weather: BehaviorSubject<OpenWeatherMap | any> = new BehaviorSubject('')
+  weather: Subject<OpenWeatherMap | WeatherApi> = new ReplaySubject()
 
   constructor(private _weatherProv: WeatherProviderService,
     private http: HttpClient) {
@@ -45,12 +46,12 @@ export class WeatherService {
   }
 
   private getWeatherOfWeatherApi(): void {
-    this.http.get(this.weatherApiLink, {params: {
+    this.http.get<WeatherApi>(this.weatherApiLink, {params: {
       key: this.weatherApiKey,
       q: this.city,
       aqi: 'yes'
     }}).subscribe(res => {
-      this.weather.next(res)
+      this.weather.next(<WeatherApi>res)
     })
   }
 
@@ -60,7 +61,7 @@ export class WeatherService {
       appid: this.openWeatherApiKey,
       units: 'metric'
     }}).subscribe(res => {
-      this.weather.next(res)
+      this.weather.next(<OpenWeatherMap>res)
     })
   }
 }
